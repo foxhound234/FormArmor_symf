@@ -629,5 +629,17 @@ class AdminController extends Controller
 		}
 		// Si formulaire pas encore soumis ou pas valide (affichage du formulaire)
 		return $this->render('FormArmorBundle:Admin:formPlan.html.twig', array('form' => $form->createView(), 'action' => 'SUPPRESSION'));
-    }
+	}
+	public function ListeValidationIncription()
+	{
+		$em = $this->getDoctrine()->getManager();
+		$rep = $em->getRepository('FormArmorBundle:Plan_formation');
+		$plan = $rep->findAll();
+		
+
+
+
+
+
+	}
 }

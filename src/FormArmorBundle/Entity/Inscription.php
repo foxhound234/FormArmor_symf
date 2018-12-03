@@ -40,6 +40,15 @@ class Inscription
      */
     private $dateInscription;
 
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="Etat", type="string",lenght=5)
+     */
+    private $Etat;
+
+    
+
 
     /**
      * Get id
