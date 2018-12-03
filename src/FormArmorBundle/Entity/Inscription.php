@@ -40,10 +40,10 @@ class Inscription
      */
     private $dateInscription;
 
-        /**
+     /**
      * @var string
      *
-     * @ORM\Column(name="Etat", type="string",lenght=5)
+     * @ORM\Column(name="Etat", type="string",length=5)
      */
     private $Etat;
 
@@ -130,5 +130,29 @@ class Inscription
     public function getSessionFormation()
     {
         return $this->session_formation;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param string $etat
+     *
+     * @return Inscription
+     */
+    public function setEtat($etat)
+    {
+        $this->Etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->Etat;
     }
 }

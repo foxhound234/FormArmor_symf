@@ -94,4 +94,3 @@ class Statut
         return $this->tauxHoraire;
     }
 }
-

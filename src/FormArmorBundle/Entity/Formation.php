@@ -259,4 +259,3 @@ class Formation
         return ($this->libelle . "-" . $this->niveau);
     }
 }
-
