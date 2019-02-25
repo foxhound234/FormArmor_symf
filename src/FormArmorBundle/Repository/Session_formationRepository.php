@@ -46,4 +46,5 @@ class Session_formationRepository extends \Doctrine\ORM\EntityRepository
 		
 		return $qb->getQuery()->getResult();
 	}
+
 }

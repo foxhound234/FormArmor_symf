@@ -635,11 +635,47 @@ class AdminController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$rep = $em->getRepository('FormArmorBundle:Plan_formation');
 		$plan = $rep->findAll();
-		
-
-
-
-
-
 	}
+	public function ListeValidationSessionAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+		$rep = $em->getRepository('FormArmorBundle:Session_formation');
+		$nbParPage = $this->container->getParameter('nb_par_page');
+		// On récupère l'objet Paginator
+		$lesSessions= $rep->listeSessions(1, $nbParPage);
+		$nbPages = ceil(count($lesSessions) / $nbParPage);
+	
+
+		return $this->render('FormArmorBundle:Admin:ListSessionValid.html.twig', array(
+			'lesSessions' => $lesSessions,
+			'nbPages'     => $nbPages,
+			'page'        => 1,
+			));
+	}
+
+	public function ValidationSessionAction($id, Request $request)
+		{
+			$em = $this->getDoctrine()->getManager();
+			$er=$this->getDoctrine()->getManager();
+			$repsession = $em->getRepository('FormArmorBundle:Session_formation');
+			$session= $repsession->find($id);
+		
+			$repincrit= $er->getRepository('FormArmorBundle:Inscription');
+
+		  $inscrit=$repincrit->findBy(array('session_formation'=>$session));
+
+
+
+    
+			return $this->render('FormArmorBundle:Admin:SessionValidation.html.twig', array(
+				'laSession' => $session,
+				'inscriptions'=>$inscrit
+				));
+      
+		}
+
+
+
 }
+
+		

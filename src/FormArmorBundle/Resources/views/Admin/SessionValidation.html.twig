@@ -1,0 +1,36 @@
+{% extends "FormArmorBundle::admin_layout.html.twig" %}
+
+
+{% block FormArmor_body %}
+	
+	<h1> Validation de la session  de {{  laSession.dateDebut|date("d/m/Y")  }} sur la formation {{laSession.formation.libelle  }}</h1>
+<table class="table">
+		<thead>
+		<tr>
+		
+			<th>Nom</th>
+			<th>Adresse</th>
+			<th>Ville</th>
+			<th>date_inscription</th>
+			<th>Etat</th>
+		</tr>
+		</thead>
+		<tbody>
+    {% for item in inscriptions %}
+    <tr       {% if loop.index is even %} class="success" {% else %} class="info" {% endif %}>
+        <td> {{ item.client.nom }}</td>
+        <td>{{ item.client.adresse }} </td>
+         <td>{{ item.client.ville }} </td>
+         <td> {{item.dateInscription|date("d/m/Y")  }}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+	<script>
+		$(function() {
+			$('#menu4').attr('class', 'active');
+		});
+	</script>
+	
+{% endblock %}
