@@ -19,14 +19,33 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
+use Symfony\Component\HttpFoundation\Session\Session;
+
 class AdminController extends Controller
 {
+	public function __construct()
+	{
+		$session = new Session();
+		//ici on teste si la personne est un admin
+		if($session->get('nvAcces')!=2)
+		{
+			redirectionAcceuil();
+		}
+        
+    }
+
+
+	public function redirectionAcceuil() // redirige vers l'acceuil
+	{
+		return $this->render('FormArmorBundle:Accueil:index.html.twig');
+	}	
     public function authentifAction(Request $request) // Affichage du formulaire d'authentification
     {
         
 		// Création du formulaire
 		$client = new Client();
 		$form   = $this->get('form.factory')->create(ClientType::class, $client);
+		
 		
 		
 		// Contrôle du mdp si method POST ou affichage du formulaire dans le cas contraire
