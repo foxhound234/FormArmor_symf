@@ -36,7 +36,7 @@
                      {% set difference = date(session.dateDebut).diff(date("now")) %}
                      {% set nombreJours = difference.days %}
                     {% if (session.nbInscrits == session.nbPlaces) or (nombreJours <= 7)  %}
-                    <td><a href="{{ path('form_armor_admin_session_Valide', {'id': session.id}) }}"> Valider </a></td>
+                    <td><a href="{{ path('form_armor_admin_sessionValide', {'id': session.id}) }}"> Valider </a></td>
                     {% endif %}
                     
 				</tr>

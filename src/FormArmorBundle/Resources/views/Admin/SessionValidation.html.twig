@@ -21,11 +21,19 @@
         <td> {{ item.client.nom }}</td>
         <td>{{ item.client.adresse }} </td>
          <td>{{ item.client.ville }} </td>
-         <td> {{item.dateInscription|date("d/m/Y")  }}
+         <td> {{item.dateInscription|date("d/m/Y")  }} </td>
+         {% if item.Etat == 'imp'%}
+				 <td> Impayée </td>
+				 {% else %}
+					<td> Payée</td>
+				 {% endif %}
+				 
     </tr>
     {% endfor %}
     </tbody>
 </table>
+<a href="{{ path('form_armor_admin_session_modif', {'id':laSession.id}) }}"> <button type="button" class="btn btn-info"> Validation</button></a>
+<a href="{{ path('form_armor_admin_session_modif', {'id':laSession.id}) }}"> <button type="button" class="btn btn-info"> Validation</button></a>
 
 	<script>
 		$(function() {

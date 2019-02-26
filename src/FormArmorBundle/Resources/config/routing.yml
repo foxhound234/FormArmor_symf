@@ -90,18 +90,20 @@ form_armor_admin_planformation_supp:
     defaults:
         _controller: FormArmorBundle:Admin:suppPlanFormation
 
-form_armor_admin_ListeSession_Validation:
-    path:     /admin/ListeSessionValide/{page}
+form_armor_admin_ListeSession:
+    path:     /admin/ListeSession/{page}
     defaults:
         _controller: FormArmorBundle:Admin:ListeValidationSession
         page:    1
         requirements:
             page: \d*
 
-form_armor_admin_session_Valide:
-    path:     /admin/planformation/Valid/{id}
+form_armor_admin_sessionValide:
+    path:     /admin/session/affiche/{id}
+    defaults:
+        _controller: FormArmorBundle:Admin:Affichesession
+
+form_armor_admin_sessionValidation:
+    path:     /admin/session/validation/{id}
     defaults:
         _controller: FormArmorBundle:Admin:ValidationSession
-
-    
-

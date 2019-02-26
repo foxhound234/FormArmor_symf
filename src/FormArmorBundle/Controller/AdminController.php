@@ -25,12 +25,12 @@ class AdminController extends Controller
 {
 	public function __construct()
 	{
-		$session = new Session();
+		//$session = new Session();
 		//ici on teste si la personne est un admin
-		if($session->get('nvAcces')!=2)
-		{
-			redirectionAcceuil();
-		}
+		//if($session->get('nvAcces')!=2)
+		//{
+		//	return $this->redirectToRoute('form_armor_homepage');
+		//}
         
     }
 
@@ -672,7 +672,7 @@ class AdminController extends Controller
 			));
 	}
 
-	public function ValidationSessionAction($id, Request $request)
+	public function AffichesessionAction($id, Request $request)
 		{
 			$em = $this->getDoctrine()->getManager();
 			$er=$this->getDoctrine()->getManager();
