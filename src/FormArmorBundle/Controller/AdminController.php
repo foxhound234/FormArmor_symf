@@ -683,14 +683,43 @@ class AdminController extends Controller
 
 		  $inscrit=$repincrit->findBy(array('session_formation'=>$session));
 
-
-
-    
 			return $this->render('FormArmorBundle:Admin:SessionValidation.html.twig', array(
 				'laSession' => $session,
 				'inscriptions'=>$inscrit
 				));
       
+		}
+
+		public function ValidationSessionAction($id)
+		{
+			$em = $this->getDoctrine()->getManager();
+			$er=$this->getDoctrine()->getManager();
+			$repsession = $em->getRepository('FormArmorBundle:Session_formation');
+			$session= $repsession->find($id);
+			$session-setClose(true);
+			$em->flush();
+		
+			$repincrit= $er->getRepository('FormArmorBundle:Inscription');
+
+			$inscrit=$repincrit->findBy(array('session_formation'=>$session));
+			foreach ($inscrit as  $client) 
+			{
+				$message = (new \Swift_Message('Hello Email'))
+				->setFrom('morganlb347@gmail.com')
+				->setTo('morganlb@hotmail.fr')
+				->setBody(
+						$this->renderView(
+								// app/Resources/views/Emails/registration.html.twig
+								'FormArmorBundle:Emails:ValidationSession.html.twig',
+								['item' => $client]
+						),
+						'text/html'
+					);
+	
+					$this->get('mailer')->send($message);
+			}
+
+				return $this->redirectToRoute('form_armor_admin_ListeSession');
 		}
 
 
