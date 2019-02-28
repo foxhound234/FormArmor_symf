@@ -683,10 +683,34 @@ class AdminController extends Controller
 
 		  $inscrit=$repincrit->findBy(array('session_formation'=>$session));
 
+			if ($request->getMethod() == 'POST') {
+				$Modif = $request->request->get('ModifAnnul');
+				foreach($inscrit as $client)
+				{
+					$message = (new \Swift_Message('Hello Email'))
+					->setFrom('morganlb347@gmail.com')
+					->setTo('morganlb@hotmail.fr')
+					->setBody(
+						$this->render('FormArmorBundle:Emails:AnnulationSession.html.twig', array(
+							'item' => $client,
+						  'modif'=>$Modif
+						)),
+							'text/html'
+						);
+		
+						$this->get('mailer')->send($message);
+				}
+	
+					return $this->redirectToRoute('form_armor_admin_ListeSession');
+				}
+			
+
+
+
 			return $this->render('FormArmorBundle:Admin:SessionValidation.html.twig', array(
 				'laSession' => $session,
 				'inscriptions'=>$inscrit
-				));
+			));
       
 		}
 
