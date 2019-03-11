@@ -9,7 +9,7 @@ form_armor_formations:
     requirements:
         page: \d*
 form_armor_client:
-      path:     /client
+    path:   /client
     defaults: { _controller: FormArmorBundle:Client:index } 
 form_armor_admin:
     path:     /admin
