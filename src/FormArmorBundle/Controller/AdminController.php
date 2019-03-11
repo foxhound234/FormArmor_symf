@@ -19,14 +19,33 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
+use Symfony\Component\HttpFoundation\Session\Session;
+
 class AdminController extends Controller
 {
+	public function __construct()
+	{
+		//$session = new Session();
+		//ici on teste si la personne est un admin
+		//if($session->get('nvAcces')!=2)
+		//{
+		//	return $this->redirectToRoute('form_armor_homepage');
+		//}
+        
+    }
+
+
+	public function redirectionAcceuil() // redirige vers l'acceuil
+	{
+		return $this->render('FormArmorBundle:Accueil:index.html.twig');
+	}	
     public function authentifAction(Request $request) // Affichage du formulaire d'authentification
     {
         
 		// Création du formulaire
 		$client = new Client();
 		$form   = $this->get('form.factory')->create(ClientType::class, $client);
+		
 		
 		
 		// Contrôle du mdp si method POST ou affichage du formulaire dans le cas contraire
@@ -635,11 +654,126 @@ class AdminController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$rep = $em->getRepository('FormArmorBundle:Plan_formation');
 		$plan = $rep->findAll();
+	}
+	public function ListeValidationSessionAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+		$rep = $em->getRepository('FormArmorBundle:Session_formation');
+		$nbParPage = $this->container->getParameter('nb_par_page');
+		// On récupère l'objet Paginator
+		$lesSessions= $rep->listeSessions(1, $nbParPage);
+		$nbPages = ceil(count($lesSessions) / $nbParPage);
+	
+
+		return $this->render('FormArmorBundle:Admin:ListSessionValid.html.twig', array(
+			'lesSessions' => $lesSessions,
+			'nbPages'     => $nbPages,
+			'page'        => 1,
+			));
+	}
+
+	public function AffichesessionAction($id, Request $request)
+		{
+			$em = $this->getDoctrine()->getManager();
+			$er=$this->getDoctrine()->getManager();
+			$repsession = $em->getRepository('FormArmorBundle:Session_formation');
+			$session= $repsession->find($id);
+		
+			$repincrit= $er->getRepository('FormArmorBundle:Inscription');
+
+		  $inscrit=$repincrit->findBy(array('session_formation'=>$session));
+
+			if ($request->getMethod() == 'POST') {
+				$Modif = $request->request->get('ModifAnnul');
+				foreach($inscrit as $client)
+				{
+					$message = (new \Swift_Message('Annulation Session'))
+					->setFrom('morganlb347@gmail.com')
+					->setTo('morganlb@hotmail.fr')
+					->setBody(
+						$this->render('FormArmorBundle:Emails:AnnulationSession.html.twig', array(
+							'item' => $client,
+						  'modif'=>$Modif
+						)),
+							'text/html'
+						);
+		
+						$this->get('mailer')->send($message);
+
+						if($session->getFormation()->getTypeForm()=="Bureautique")
+						{
+						 $Duree=$session->getFormation()->getDuree();
+             $NvDureeBureau=$client->getClient()->getNbhbur()-$Duree ;
+						 $client->getClient()->setNbhbur($NvDureeBureau);
+						 $er->flush();
+	
+						}else
+						{
+							$Duree=$session->getFormation()->getDuree();
+							$NvDureeCompta=$client->getClient()->getNbhcpta() - $Duree ;
+							$client->getClient()->setNbhcpta($NvDureeCompta);
+							$er->flush();
+						}
+						
+						$er->remove($client);	
+				}
+				$er->flush();
+
+				$res=$repsession->suppSession($id);
+				$em->persist($session);
+				$em->flush();
+
+			 return $this->redirectToRoute('form_armor_admin_ListeSession');
+				}
+			
+
+
+
+			return $this->render('FormArmorBundle:Admin:SessionValidation.html.twig', array(
+				'laSession' => $session,
+				'inscriptions'=>$inscrit
+			));
+      
+		}
+
+		public function ValidationSessionAction($id)
+		{
+			$em = $this->getDoctrine()->getManager();
+			$er=$this->getDoctrine()->getManager();
+			$repsession = $em->getRepository('FormArmorBundle:Session_formation');
+			$session= $repsession->find($id);
+		
 		
 
+			$repincrit= $er->getRepository('FormArmorBundle:Inscription');
+			$inscrit=$repincrit->findBy(array('session_formation'=>$session));
+
+
+			foreach ($inscrit as  $client) 
+			{
+				$message = (new \Swift_Message('Validation inscription'))
+				->setFrom('morganlb347@gmail.com')
+				->setTo('morganlb@hotmail.fr')
+				->setBody(
+						$this->renderView(
+								// app/Resources/views/Emails/registration.html.twig
+								'FormArmorBundle:Emails:ValidationSession.html.twig',
+								['item' => $client]
+						),
+						'text/html'
+					);
+	
+					$this->get('mailer')->send($message);
+			}
+			$session->setClose(true);
+			$em->flush();
+
+		
+				return $this->redirectToRoute('form_armor_admin_ListeSession');
+		}
 
 
 
-
-	}
 }
+
+		

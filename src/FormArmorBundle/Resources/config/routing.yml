@@ -1,11 +1,11 @@
 form_armor_homepage:
-    path:     /
+    path:  /
     defaults: { _controller: FormArmorBundle:Accueil:index }
 form_armor_formations:
     path:     /formations/{page}
     defaults:
         _controller: FormArmorBundle:Formations:liste
-        page:     1
+        page: 1
     requirements:
         page: \d*
 form_armor_client:
@@ -18,7 +18,7 @@ form_armor_admin_statut:
     path:     /admin/statut/{page}
     defaults:
         _controller: FormArmorBundle:Admin:listeStatut
-        page:     1
+        page:  1
     requirements:
         page: \d*
 form_armor_admin_statut_modif:
@@ -89,3 +89,21 @@ form_armor_admin_planformation_supp:
     path:     /admin/planformation/supp/{id}
     defaults:
         _controller: FormArmorBundle:Admin:suppPlanFormation
+
+form_armor_admin_ListeSession:
+    path:     /admin/ListeSession/{page}
+    defaults:
+        _controller: FormArmorBundle:Admin:ListeValidationSession
+        page:    1
+        requirements:
+            page: \d*
+
+form_armor_admin_sessionValide:
+    path:     /admin/session/affiche/{id}
+    defaults:
+        _controller: FormArmorBundle:Admin:Affichesession
+
+form_armor_admin_sessionValidation:
+    path:     /admin/session/validation/{id}
+    defaults:
+        _controller: FormArmorBundle:Admin:ValidationSession

@@ -1,0 +1,93 @@
+{% extends "FormArmorBundle::admin_layout.html.twig" %}
+
+
+{% block FormArmor_body %}
+	
+	<h1> Validation de la session  de {{  laSession.dateDebut|date("d/m/Y")  }} sur la formation {{laSession.formation.libelle  }}</h1>
+<table class="table">
+		<thead>
+		<tr>
+		
+			<th>Nom</th>
+			<th>Adresse</th>
+			<th>Ville</th>
+			<th>date_inscription</th>
+			<th>Etat</th>
+		</tr>
+		</thead>
+		<tbody>
+    {% for item in inscriptions %}
+    <tr       {% if loop.index is even %} class="success" {% else %} class="info" {% endif %}>
+        <td> {{ item.client.nom }}</td>
+        <td>{{ item.client.adresse }} </td>
+         <td>{{ item.client.ville }} </td>
+         <td> {{item.dateInscription|date("d/m/Y")  }} </td>
+         {% if item.Etat == 'imp'%}
+				 <td> Impayée </td>
+				 {% else %}
+					<td> Payée</td>
+				 {% endif %}
+				 
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a href="{{ path('form_armor_admin_sessionValidation', {'id': laSession.id}) }}"> <button type="button" class="btn btn-info"> Validation</button></a>
+<a href=""  data-toggle="modal" data-target="#ModalAnnulation"> <button type="button" class="btn btn-info"> Annulation </button> </a>
+
+
+
+
+<div class="modal fade" id="ModalAnnulation" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">  Saisir  le modif de l'annulation</h4>
+        </div>
+        <div class="modal-body">
+				<form method="post" action="{{ path('form_armor_admin_sessionValide', {'id': laSession.id}) }}">
+
+					<input type="text"  name="ModifAnnul" />
+
+    		<input type="submit" class="btn btn-primary" />
+
+
+				</form>
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script>
+		$(function() {
+			$('#menu4').attr('class', 'active');
+		});
+	</script>
+	
+{% endblock %}

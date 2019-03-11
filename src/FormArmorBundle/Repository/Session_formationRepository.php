@@ -40,10 +40,12 @@ class Session_formationRepository extends \Doctrine\ORM\EntityRepository
 	public function suppSession($id) // Suppression de la session d'identifiant $id
 	{
 		$qb = $this->createQueryBuilder('s');
+	
 		$query = $qb->delete('FormArmorBundle\Entity\Session_formation', 's')
-		  ->where('s.id = :id')
-		  ->setParameter('id', $id);
+		->where('s.id = :id')
+		->setParameter('id', $id);
 		
 		return $qb->getQuery()->getResult();
 	}
+
 }
