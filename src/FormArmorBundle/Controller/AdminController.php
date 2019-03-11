@@ -687,7 +687,7 @@ class AdminController extends Controller
 				$Modif = $request->request->get('ModifAnnul');
 				foreach($inscrit as $client)
 				{
-					$message = (new \Swift_Message('Hello Email'))
+					$message = (new \Swift_Message('Annulation Session'))
 					->setFrom('morganlb347@gmail.com')
 					->setTo('morganlb@hotmail.fr')
 					->setBody(
@@ -699,9 +699,31 @@ class AdminController extends Controller
 						);
 		
 						$this->get('mailer')->send($message);
-				}
+
+						if($session->getFormation()->getTypeForm()=="Bureautique")
+						{
+						 $Duree=$session->getFormation()->getDuree();
+             $NvDureeBureau=$client->getClient()->getNbhbur()-$Duree ;
+						 $client->getClient()->setNbhbur($NvDureeBureau);
+						 $er->flush();
 	
-					return $this->redirectToRoute('form_armor_admin_ListeSession');
+						}else
+						{
+							$Duree=$session->getFormation()->getDuree();
+							$NvDureeCompta=$client->getClient()->getNbhcpta() - $Duree ;
+							$client->getClient()->setNbhcpta($NvDureeCompta);
+							$er->flush();
+						}
+						
+						$er->remove($client);	
+				}
+				$er->flush();
+
+				$res=$repsession->suppSession($id);
+				$em->persist($session);
+				$em->flush();
+
+			 return $this->redirectToRoute('form_armor_admin_ListeSession');
 				}
 			
 
@@ -720,15 +742,16 @@ class AdminController extends Controller
 			$er=$this->getDoctrine()->getManager();
 			$repsession = $em->getRepository('FormArmorBundle:Session_formation');
 			$session= $repsession->find($id);
-			$session-setClose(true);
-			$em->flush();
 		
-			$repincrit= $er->getRepository('FormArmorBundle:Inscription');
+		
 
+			$repincrit= $er->getRepository('FormArmorBundle:Inscription');
 			$inscrit=$repincrit->findBy(array('session_formation'=>$session));
+
+
 			foreach ($inscrit as  $client) 
 			{
-				$message = (new \Swift_Message('Hello Email'))
+				$message = (new \Swift_Message('Validation inscription'))
 				->setFrom('morganlb347@gmail.com')
 				->setTo('morganlb@hotmail.fr')
 				->setBody(
@@ -742,7 +765,10 @@ class AdminController extends Controller
 	
 					$this->get('mailer')->send($message);
 			}
+			$session->setClose(true);
+			$em->flush();
 
+		
 				return $this->redirectToRoute('form_armor_admin_ListeSession');
 		}
 
