@@ -688,7 +688,7 @@ class AdminController extends Controller
 				foreach($inscrit as $client)
 				{
 					$message = (new \Swift_Message('Annulation Session'))
-					->setFrom('morganlb347@gmail.com')
+					->setFrom('philipe.logiou@orange.fr')
 					->setTo('morganlb@hotmail.fr')
 					->setBody(
 						$this->render('FormArmorBundle:Emails:AnnulationSession.html.twig', array(
@@ -698,7 +698,7 @@ class AdminController extends Controller
 							'text/html'
 						);
 		
-						$this->get('mailer')->send($message);
+						$this->get('mailer')->send($message);	
 
 						if($session->getFormation()->getTypeForm()=="Bureautique")
 						{
@@ -714,12 +714,11 @@ class AdminController extends Controller
 							$client->getClient()->setNbhcpta($NvDureeCompta);
 							$er->flush();
 						}
-						
 						$er->remove($client);	
+						$er->flush();
 				}
-				$er->flush();
-
-				$res=$repsession->suppSession($id);
+				
+			$res=$repsession->suppSession($id);
 				$em->persist($session);
 				$em->flush();
 
@@ -748,7 +747,7 @@ class AdminController extends Controller
 			$repincrit= $er->getRepository('FormArmorBundle:Inscription');
 			$inscrit=$repincrit->findBy(array('session_formation'=>$session));
 
-
+	
 			foreach ($inscrit as  $client) 
 			{
 				$message = (new \Swift_Message('Validation inscription'))
@@ -762,7 +761,7 @@ class AdminController extends Controller
 						),
 						'text/html'
 					);
-	
+				
 					$this->get('mailer')->send($message);
 			}
 			$session->setClose(true);
