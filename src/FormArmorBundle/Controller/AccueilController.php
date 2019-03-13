@@ -10,7 +10,7 @@ class AccueilController extends Controller
     public function __construct()
     {
         $session = new Session();
-        //$session->start();
+        //$session->start(); hihi
 
         // ébauche de contrôle utilisateur
         $session->set('nvAcces', 0);
