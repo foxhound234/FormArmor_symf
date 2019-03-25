@@ -58,13 +58,17 @@ class AdminController extends Controller
 				$donneePost = $request->request->get('client');
 				$nom = $donneePost['nom'];
 				$mdp = $donneePost['password'];
-				
+		
+
 				// Controle du nom et du mdp
 				$manager = $this->getDoctrine()->getManager();
 				$rep = $manager->getRepository('FormArmorBundle:Client');
 				$nbClient = $rep->verifMDP($nom, $mdp);
 				if ($nbClient > 0)
 				{
+					$session = new Session();
+					$session->set('nom', $nom);
+
 					return $this->render('FormArmorBundle:Admin:accueil.html.twig');
 				}
 				$request->getSession()->getFlashBag()->add('connection', 'Login ou mot de passe incorrects');
@@ -688,7 +692,7 @@ class AdminController extends Controller
 				foreach($inscrit as $client)
 				{
 					$message = (new \Swift_Message('Annulation Session'))
-					->setFrom('philipe.logiou@orange.fr')
+					->setFrom('morganlb347@gmail.com')
 					->setTo('morganlb@hotmail.fr')
 					->setBody(
 						$this->render('FormArmorBundle:Emails:AnnulationSession.html.twig', array(

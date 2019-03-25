@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "bfba99ea2d4e597d6f6518e64694552c",
+=======
+    "content-hash": "5156081e55257246e0d2f81026aad540",
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
     "packages": [
         {
             "name": "behat/transliterator",
@@ -48,6 +52,7 @@
                 "slug",
                 "transliterator"
             ],
+<<<<<<< HEAD
             "time": "2017-04-04T11:38:05+00:00"
         },
         {
@@ -105,6 +110,9 @@
                 "tls"
             ],
             "time": "2019-01-28T09:30:10+00:00"
+=======
+            "time": "2015-09-28T16:26:35+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "doctrine/annotations",
@@ -242,7 +250,11 @@
                 "cache",
                 "caching"
             ],
+<<<<<<< HEAD
             "time": "2017-07-22T12:49:21+00:00"
+=======
+            "time": "2015-12-31T16:37:02+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "doctrine/collections",
@@ -381,7 +393,11 @@
                 "persistence",
                 "spl"
             ],
+<<<<<<< HEAD
             "time": "2016-11-30T16:50:46+00:00"
+=======
+            "time": "2015-12-25T13:18:31+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "doctrine/data-fixtures",
@@ -509,7 +525,11 @@
                 "persistence",
                 "queryobject"
             ],
+<<<<<<< HEAD
             "time": "2017-07-22T20:44:48+00:00"
+=======
+            "time": "2016-01-05T22:11:12+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -594,7 +614,11 @@
                 "orm",
                 "persistence"
             ],
+<<<<<<< HEAD
             "time": "2019-02-06T13:18:04+00:00"
+=======
+            "time": "2016-08-10T15:35:22+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
@@ -682,7 +706,11 @@
                 "cache",
                 "caching"
             ],
+<<<<<<< HEAD
             "time": "2017-10-12T17:23:29+00:00"
+=======
+            "time": "2016-01-26T17:28:51+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "doctrine/doctrine-fixtures-bundle",
@@ -739,7 +767,11 @@
                 "Fixture",
                 "persistence"
             ],
+<<<<<<< HEAD
             "time": "2017-10-30T19:26:42+00:00"
+=======
+            "time": "2015-11-04T21:23:23+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "doctrine/inflector",
@@ -922,12 +954,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/orm.git",
+<<<<<<< HEAD
                 "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/doctrine/orm/zipball/810a7baf81462a5ddf10e8baa8cb94b6eec02754",
                 "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754",
+=======
+                "reference": "bc4ddbfb0114cb33438cc811c9a740d8aa304aab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/bc4ddbfb0114cb33438cc811c9a740d8aa304aab",
+                "reference": "bc4ddbfb0114cb33438cc811c9a740d8aa304aab",
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
                 "shasum": ""
             },
             "require": {
@@ -990,6 +1031,7 @@
                 "database",
                 "orm"
             ],
+<<<<<<< HEAD
             "time": "2017-12-17T02:57:51+00:00"
         },
         {
@@ -1067,6 +1109,9 @@
                 "User management"
             ],
             "time": "2018-03-08T08:59:27+00:00"
+=======
+            "time": "2016-01-05T21:34:58+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -1147,7 +1192,11 @@
                 "tree",
                 "uploadable"
             ],
+<<<<<<< HEAD
             "time": "2018-07-26T12:16:35+00:00"
+=======
+            "time": "2016-07-30T15:51:52+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1198,7 +1247,11 @@
             "keywords": [
                 "parameters management"
             ],
+<<<<<<< HEAD
             "time": "2018-02-13T18:05:56+00:00"
+=======
+            "time": "2015-11-10T17:04:01+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "jdorn/sql-formatter",
@@ -1326,7 +1379,11 @@
                 "logging",
                 "psr-3"
             ],
+<<<<<<< HEAD
             "time": "2018-11-05T09:00:11+00:00"
+=======
+            "time": "2016-07-29T03:23:52+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "paragonie/random_compat",
@@ -1375,7 +1432,11 @@
                 "pseudorandom",
                 "random"
             ],
+<<<<<<< HEAD
             "time": "2019-01-03T20:59:08+00:00"
+=======
+            "time": "2016-04-03T06:00:07+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "psr/cache",
@@ -1468,7 +1529,11 @@
                 "psr",
                 "psr-3"
             ],
+<<<<<<< HEAD
             "time": "2018-11-20T15:27:04+00:00"
+=======
+            "time": "2012-12-21T11:40:51+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "sensio/distribution-bundle",
@@ -1520,7 +1585,11 @@
                 "configuration",
                 "distribution"
             ],
+<<<<<<< HEAD
             "time": "2018-12-14T17:36:15+00:00"
+=======
+            "time": "2016-06-23T16:11:33+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -1590,7 +1659,11 @@
                 "annotations",
                 "controllers"
             ],
+<<<<<<< HEAD
             "time": "2017-12-14T19:03:23+00:00"
+=======
+            "time": "2016-03-25T17:08:27+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "sensiolabs/security-checker",
@@ -1636,7 +1709,11 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
+<<<<<<< HEAD
             "time": "2018-12-19T17:14:59+00:00"
+=======
+            "time": "2015-11-07T08:07:40+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -1751,7 +1828,11 @@
                 "mail",
                 "mailer"
             ],
+<<<<<<< HEAD
             "time": "2018-07-31T09:26:32+00:00"
+=======
+            "time": "2016-07-08T11:51:25+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "symfony/monolog-bundle",
@@ -1811,7 +1892,11 @@
                 "log",
                 "logging"
             ],
+<<<<<<< HEAD
             "time": "2017-01-02T19:04:26+00:00"
+=======
+            "time": "2016-04-13T16:21:01+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "symfony/polyfill-apcu",
@@ -1867,6 +1952,7 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "time": "2019-02-06T07:57:58+00:00"
         },
         {
@@ -1926,6 +2012,9 @@
                 "portable"
             ],
             "time": "2019-02-06T07:57:58+00:00"
+=======
+            "time": "2016-05-18T14:26:46+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "symfony/polyfill-intl-icu",
@@ -1983,7 +2072,11 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "time": "2019-01-07T19:39:47+00:00"
+=======
+            "time": "2016-05-18T14:26:46+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2042,7 +2135,11 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "time": "2019-02-06T07:57:58+00:00"
+=======
+            "time": "2016-05-18T14:26:46+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "symfony/polyfill-php56",
@@ -2098,7 +2195,11 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "time": "2019-02-06T07:57:58+00:00"
+=======
+            "time": "2016-05-18T14:26:46+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "symfony/polyfill-php70",
@@ -2157,7 +2258,11 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "time": "2019-02-06T07:57:58+00:00"
+=======
+            "time": "2016-05-18T14:26:46+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "symfony/polyfill-util",
@@ -2209,7 +2314,11 @@
                 "polyfill",
                 "shim"
             ],
+<<<<<<< HEAD
             "time": "2019-02-08T14:16:39+00:00"
+=======
+            "time": "2016-05-18T14:26:46+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "symfony/swiftmailer-bundle",
@@ -2268,7 +2377,11 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
+<<<<<<< HEAD
             "time": "2017-10-19T01:06:41+00:00"
+=======
+            "time": "2016-01-15T16:41:20+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "symfony/symfony",
@@ -2410,7 +2523,11 @@
             "keywords": [
                 "framework"
             ],
+<<<<<<< HEAD
             "time": "2017-01-28T02:53:38+00:00"
+=======
+            "time": "2016-07-30T09:31:00+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         },
         {
             "name": "twig/twig",
@@ -2476,7 +2593,11 @@
             "keywords": [
                 "templating"
             ],
+<<<<<<< HEAD
             "time": "2019-03-23T14:27:19+00:00"
+=======
+            "time": "2016-05-30T09:11:59+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         }
     ],
     "packages-dev": [
@@ -2532,6 +2653,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
+<<<<<<< HEAD
             "time": "2017-12-07T15:36:41+00:00"
         },
         {
@@ -2546,6 +2668,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/b539f37134c10edbf85dc0567be4151c56870f5e",
                 "reference": "b539f37134c10edbf85dc0567be4151c56870f5e",
+=======
+            "time": "2016-06-20T05:58:05+00:00"
+        },
+        {
+            "name": "symfony/phpunit-bridge",
+            "version": "v4.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/phpunit-bridge.git",
+                "reference": "2cc651a38fcb831a405c14fcb76fcb00320e7ee8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/2cc651a38fcb831a405c14fcb76fcb00320e7ee8",
+                "reference": "2cc651a38fcb831a405c14fcb76fcb00320e7ee8",
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
                 "shasum": ""
             },
             "require": {
@@ -2563,7 +2701,11 @@
             "type": "symfony-bridge",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-master": "3.4-dev"
+=======
+                    "dev-master": "4.2-dev"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
                 },
                 "thanks": {
                     "name": "phpunit/phpunit",
@@ -2597,7 +2739,11 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2019-02-16T18:50:26+00:00"
+=======
+            "time": "2019-02-18T06:49:49+00:00"
+>>>>>>> f402c8d41f356e6f409b965e1628c653cea8a54a
         }
     ],
     "aliases": [],
