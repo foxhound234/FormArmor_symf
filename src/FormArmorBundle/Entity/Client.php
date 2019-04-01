@@ -1,8 +1,7 @@
 <?php
 
 namespace FormArmorBundle\Entity;
-use FOS\UserBundle\Model\User as BaseUser;
-
+use FOS\UserBundle\Model\User as FosUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="client")
  * @ORM\Entity(repositoryClass="FormArmorBundle\Repository\ClientRepository")
  */
-class Client extends BaseUser
+class Client extends FosUser
 {
     /**
      * @var int
@@ -20,48 +19,49 @@ class Client extends BaseUser
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    public $id;
 
 	/**
 	 * @ORM\ManyToOne (targetEntity="FormArmorBundle\Entity\Statut")
 	 * @ORM\JoinColumn(nullable=false)
 	 */
-	private $statut;
+	protected $statut;
+	
 
     /**
      * @var string
      *
      * @ORM\Column(name="adresse", type="string", length=60)
      */
-    private $adresse;
+    protected $adresse;
 
     /**
      * @var string
      *
      * @ORM\Column(name="cp", type="string", length=6)
      */
-    private $cp;
+    protected $cp;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ville", type="string", length=50)
      */
-    private $ville;
+    protected $ville;
 
     /**
      * @var int
      *
      * @ORM\Column(name="nbhcpta", type="smallint")
      */
-    private $nbhcpta;
+    protected $nbhcpta;
 
     /**
      * @var int
      *
      * @ORM\Column(name="nbhbur", type="smallint")
      */
-    private $nbhbur;
+    protected $nbhbur;
 
 
     /**
