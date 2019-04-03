@@ -21,9 +21,18 @@ class Client extends FosUser
      */
     public $id;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="FormArmorBundle\Entity\Group")
+     * @ORM\JoinTable(name="fos_user_user_group",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     * )
+     */
+    protected $groups;
+
 	/**
 	 * @ORM\ManyToOne (targetEntity="FormArmorBundle\Entity\Statut")
-	 * @ORM\JoinColumn(nullable=false)
+	 * @ORM\JoinColumn( nullable=true)
 	 */
 	protected $statut;
 	
@@ -52,14 +61,14 @@ class Client extends FosUser
     /**
      * @var int
      *
-     * @ORM\Column(name="nbhcpta", type="smallint")
+     * @ORM\Column(name="nbhcpta", type="smallint", nullable=true)
      */
     protected $nbhcpta;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="nbhbur", type="smallint")
+     * @ORM\Column(name="nbhbur", type="smallint", nullable=true)
      */
     protected $nbhbur;
 
