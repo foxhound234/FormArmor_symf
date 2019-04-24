@@ -1,6 +1,7 @@
 <?php
 
 namespace FormArmorBundle\Entity;
+use FOS\UserBundle\Model\User as BaseUser;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="client")
  * @ORM\Entity(repositoryClass="FormArmorBundle\Repository\ClientRepository")
  */
-class Client
+class Client extends BaseUser
 {
     /**
      * @var int
@@ -19,27 +20,13 @@ class Client
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
 	/**
 	 * @ORM\ManyToOne (targetEntity="FormArmorBundle\Entity\Statut")
 	 * @ORM\JoinColumn(nullable=false)
 	 */
 	private $statut;
-	
-	/**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=40)
-     */
-    private $nom;
-	
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=20)
-     */
-    private $password;
 
     /**
      * @var string
@@ -61,13 +48,6 @@ class Client
      * @ORM\Column(name="ville", type="string", length=50)
      */
     private $ville;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=40)
-     */
-    private $email;
 
     /**
      * @var int
@@ -92,30 +72,6 @@ class Client
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return Client
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
 
     /**
@@ -191,30 +147,6 @@ class Client
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Client
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
      * Set nbhcpta
      *
      * @param integer $nbhcpta
@@ -284,29 +216,5 @@ class Client
     public function getStatut()
     {
         return $this->statut;
-    }
-
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return Client
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
     }
 }

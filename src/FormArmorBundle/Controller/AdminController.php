@@ -58,13 +58,17 @@ class AdminController extends Controller
 				$donneePost = $request->request->get('client');
 				$nom = $donneePost['nom'];
 				$mdp = $donneePost['password'];
-				
+		
+
 				// Controle du nom et du mdp
 				$manager = $this->getDoctrine()->getManager();
 				$rep = $manager->getRepository('FormArmorBundle:Client');
 				$nbClient = $rep->verifMDP($nom, $mdp);
 				if ($nbClient > 0)
 				{
+					$session = new Session();
+					$session->set('nom', $nom);
+
 					return $this->render('FormArmorBundle:Admin:accueil.html.twig');
 				}
 				$request->getSession()->getFlashBag()->add('connection', 'Login ou mot de passe incorrects');
@@ -698,7 +702,7 @@ class AdminController extends Controller
 							'text/html'
 						);
 		
-						$this->get('mailer')->send($message);
+						$this->get('mailer')->send($message);	
 
 						if($session->getFormation()->getTypeForm()=="Bureautique")
 						{
@@ -714,12 +718,11 @@ class AdminController extends Controller
 							$client->getClient()->setNbhcpta($NvDureeCompta);
 							$er->flush();
 						}
-						
 						$er->remove($client);	
+						$er->flush();
 				}
-				$er->flush();
-
-				$res=$repsession->suppSession($id);
+				
+			$res=$repsession->suppSession($id);
 				$em->persist($session);
 				$em->flush();
 
@@ -748,7 +751,7 @@ class AdminController extends Controller
 			$repincrit= $er->getRepository('FormArmorBundle:Inscription');
 			$inscrit=$repincrit->findBy(array('session_formation'=>$session));
 
-
+	
 			foreach ($inscrit as  $client) 
 			{
 				$message = (new \Swift_Message('Validation inscription'))
@@ -762,7 +765,7 @@ class AdminController extends Controller
 						),
 						'text/html'
 					);
-	
+				
 					$this->get('mailer')->send($message);
 			}
 			$session->setClose(true);

@@ -1,8 +1,9 @@
 <?php
 
 namespace FormArmorBundle\Tests\Controller;
-
+//
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use PHPUnit\Framework\TestCase;
 
 class DefaultControllerTest extends WebTestCase
 {
