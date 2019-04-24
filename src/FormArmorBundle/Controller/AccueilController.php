@@ -14,7 +14,6 @@ class AccueilController extends Controller
 
         // ébauche de contrôle utilisateur
         $session->set('nvAcces', 0);
-        echo $session->get('nvAcces');
 
         // set flash messages
         //$session->getFlashBag()->add('notice', 'Profile updated');

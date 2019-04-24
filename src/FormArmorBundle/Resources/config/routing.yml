@@ -107,3 +107,8 @@ form_armor_admin_sessionValidation:
     path:     /admin/session/validation/{id}
     defaults:
         _controller: FormArmorBundle:Admin:ValidationSession
+
+form_armor_admin_Deconnect:
+    path:     /admin/session/Deconnection
+    defaults:
+        _controller: FormArmorBundle:Admin:Deconnection

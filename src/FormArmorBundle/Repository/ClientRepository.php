@@ -53,4 +53,11 @@ class ClientRepository extends \Doctrine\ORM\EntityRepository
 		
 		return $qb->getQuery()->getResult();
 	}
+	public function getClient($nom, $mdp)
+	{
+		$qb = $this->createQueryBuilder('c');
+		$qb->select('c');
+		$qb->andWhere('c.nom = :nom AND c.password = :mdp')->setParameter('nom', $nom)->setParameter('mdp',   $mdp);
+		return $qb->getQuery()->getArrayResult();
+	}
 }

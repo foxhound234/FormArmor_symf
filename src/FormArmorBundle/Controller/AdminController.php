@@ -772,7 +772,10 @@ class AdminController extends Controller
 				return $this->redirectToRoute('form_armor_admin_ListeSession');
 		}
 
-
+		public function DeconnectionAction()
+		{
+			return $this->redirectionAcceuil();
+		}
 
 }
 
