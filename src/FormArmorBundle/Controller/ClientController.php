@@ -26,8 +26,8 @@ class ClientController extends Controller
 
     public function indexAction()
     {
-        $user=$this->container->get('security.context')->getToken()->getUser();
-        $client_id = $user->id;
+        $user=$this->container->get('security.token_storage')->getToken()->getUser();
+        $client_id = $user->getId();
         $em = $this->getDoctrine()->getManager();
         $RAW_QUERY = 'call session_autorisee(:client_id)';
         $statement = $em->getConnection()->prepare($RAW_QUERY);
@@ -54,8 +54,8 @@ class ClientController extends Controller
     }
     public function confirmAction($id, Request $request)
     {
-        $user=$this->container->get('security.context')->getToken()->getUser();
-        $client_id = $user->id;
+        $user=$this->container->get('security.token_storage')->getToken()->getUser();
+        $client_id = $user->getId();
         $em = $this->getDoctrine()->getManager();
         $RAW_QUERY = 'insert into inscription (client_id, session_formation_id, date_inscription, etat) values (:id_client, :id_session, :date_inscription, \'\')';
         $statement = $em->getConnection()->prepare($RAW_QUERY);
