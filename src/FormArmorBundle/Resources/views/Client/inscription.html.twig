@@ -1,0 +1,18 @@
+{% extends "FormArmorBundle::layout.html.twig" %}
+{% block FormArmor_body %}
+	<div style="text-align: center"><h1>Confirmation d'inscription</h1><br/>
+    <h4>Formation {{session.0.libelle}} qui se déroulera le {{session.0.date|date("d/m/Y")}}</h4><br/>
+    <button id="confirm">Confirmer</button><button id="annul">Annuler</button>
+    </div>
+	<script>
+		$(function() {
+            $("#annul").on("click", function(){
+                document.location.replace('{{ path('form_armor_client') }}');
+            });
+            $("#confirm").on("click", function(){
+                var id = {{session.0.id}};
+    		    document.location.replace('confirmation/'+id);
+            });
+		});
+	</script>
+{% endblock %}

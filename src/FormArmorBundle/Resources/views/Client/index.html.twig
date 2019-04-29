@@ -1,12 +1,18 @@
 {% extends "FormArmorBundle::layout.html.twig" %}
 {% block FormArmor_body %}
-    <table class="table">
-		<tr><th scope="col">Libell&eacute;</th><th scope="col">Niveau</th><th scope="col">Description</th><th scope="col">Date</th></tr>
-		{%
-			
-		%}
-		<table/>
-    <script>
+	<table class="table">
+		<tr><th>Libell&eacute;</th><th>Niveau</th><th>Description</th><th>Date</th></tr>
+		{% for session in sessions %}
+        <tr id="{{session.id}}" onclick="inscription({{session.id}})"><td>{{session.libelle}}</td><td>{{session.niveau}}</td><td>{{session.description}}</td>
+				<td>{{session.date|date("d/m/Y")}}</td></tr>
+    {% endfor %}
+	</table>
+	<script>
+		function inscription(id) {
+    		document.location.replace('inscription/'+id);
+		}
+	</script>
+	<script>
 		$(function() {
 			$('#menu4').attr('class', 'active');
 		});
