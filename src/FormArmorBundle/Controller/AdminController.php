@@ -25,12 +25,7 @@ class AdminController extends Controller
 {
 	public function __construct()
 	{
-		//$session = new Session();
-		//ici on teste si la personne est un admin
-		//if($session->get('nvAcces')!=2)
-		//{
-		//	return $this->redirectToRoute('form_armor_homepage');
-		//}
+		
         
     }
 
@@ -82,6 +77,7 @@ class AdminController extends Controller
 	// Gestion des statuts
 	public function listeStatutAction($page)
 	{
+		$this->denyAccessUnlessGranted('ROLE_ADMIN');
 		if ($page < 1)
 		{
 			throw $this->createNotFoundException("La page ".$page." n'existe pas.");

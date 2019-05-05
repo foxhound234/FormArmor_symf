@@ -16,20 +16,18 @@ class ClientController extends Controller
 {
     public function __construct()
 	{
-		//ici on teste si la personne est un admin
-		//if($session->get('nvAcces')!=1)
-		//{
-			//return $this->redirectToRoute('form_armor_homepage');
-		//}
+
         
     }
 
     public function indexAction()
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $user=$this->container->get('security.token_storage')->getToken()->getUser();
         $client_id = $user->getId();
         $em = $this->getDoctrine()->getManager();
-        $RAW_QUERY = 'call session_autorisee(:client_id)';
+        //$RAW_QUERY = 'call session_autorisee(:client_id)';
         $statement = $em->getConnection()->prepare($RAW_QUERY);
         $statement->bindValue('client_id', $client_id);
         $statement->execute();
@@ -43,6 +41,8 @@ class ClientController extends Controller
     }
     public function inscripAction($id, Request $request)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $em = $this->getDoctrine()->getManager();
         $RAW_QUERY = 'select s.id, f.libelle, date_debut as date from session_formation s,
         formation f where s.id = :id_session and f.id = s.formation_id';
@@ -54,6 +54,8 @@ class ClientController extends Controller
     }
     public function confirmAction($id, Request $request)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $user=$this->container->get('security.token_storage')->getToken()->getUser();
         $client_id = $user->getId();
         $em = $this->getDoctrine()->getManager();
